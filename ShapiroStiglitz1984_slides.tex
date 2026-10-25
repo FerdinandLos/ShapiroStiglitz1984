@@ -1,0 +1,107 @@
+\documentclass{beamer}
+
+% Choose a presentation theme
+\usetheme{CambridgeUS} 
+
+\title{To Work or to Shirk: The Shapiro-Stiglitz Theory}
+\subtitle{Shapiro, C.; Stiglitz, J.E. (1984). "Equilibrium Unemployment as a Worker Discipline Device". The American Economic Review. 74 (3): 433-444}
+\author{Ferdinand Loser}
+\institute{Organizational Economics, Ludwig-Maximilian University Munich (Prof. Anik Ahsraf)}
+\date{\today}
+
+\begin{document}
+
+% Create the title slide
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% First content slide
+\begin{frame}{Motivation}
+    \begin{itemize}
+        \item First point
+        \item Second point
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Worker's Choice}
+    An individual worker's utility function is given by:
+    $$U(w, e) = w - e$$ 
+    where $w$ is the wage and $e$ is the effort level. 
+    Her lifetime utility is given by:
+    $$W = E \int_{0}^{\infty} u(w(t), e(t)) \exp(-rt) \, dt$$
+    where $r$ is the discount rate. \\
+
+    She has the choice to either work or shirk.
+    When working, she exerts effort $e$ and receives wage $w$. When shirking, she exerts no effort and receives the same wage $w$. However, a worker who shirks faces a probability $q$ of being caught and fired, in which case she receives unemployment benefits $\bar{w}$. Regardless of effort $e$, a worker also faces an exogenous probability $b$ of being fired. 
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Asset Equations}
+    If she decides to work, her asset equation is given by:
+    $$rV_E^N = w - e + b(V_u - V_E^N)$$
+    \begin{itemize}
+        \item Probability of being fired: $b$ (exogenous)
+        \item Loss: $V_u - V_E^N$.
+    \end{itemize}
+    If she decides to shirk, her asset equation is given by:
+    $$rV_E^S = w + (b + q)(V_u - V_E^S)$$
+    \begin{itemize}
+        \item Probability of being fired: $b +q$ (exogenous + endogenous)
+        \item Loss: $V_u - V_E^S$.
+    \end{itemize}
+    \framebreak
+    Finally, if she is unemployed, her asset equation is given by:
+    $$rV_u = \bar{w} + a(V_E - V_u)$$
+    \begin{itemize}
+        \item Unemployment benefits: $\bar{w}$
+        \item Probability of being hired: $a$
+        \item Gain: $V_E - V_u$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{No-Shirking Condition}
+    In order for a worker to exert effort (not shirk), the following condition must hold:
+    $$V_E^N \geq V_E^S$$
+    Plugging in the asset equations, we get the \textbf{No-Shirking Condition (NSC)}:
+    $$w \ge rV_u + \frac{(r + b + q)e}{q} \equiv \hat{w}$$
+    whereby $\hat{w}$ is the \textit{critical wage}.
+\end{frame}
+
+\begin{frame}{Firm's Choice}
+    \begin{itemize}
+        \item If $w < \hat{w}$, workers will shirk due to (1) the low wage $w$ and (2) a high probability $a$ of being rehired (high labor demand at low $w$). $\Rightarrow$ Firm should increase $w$ to $\hat{w}$ to prevent shirking.
+        \item If $w > \hat{w}$, workers will exert effort $e$ due to (1) the high wage $w$ and (2) a low probability $a$ of being rehired (low labor demand at high $w$). $\Rightarrow$ Firm should decrease $w$ to $\hat{w}$ to save costs.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Aggregate NSC}
+    In steady state, the employment pool $L$ stays constant, i.e. the flow into unemployment must equal the flow out of unemployment:
+    $$ bL = a(N-L) \Leftrightarrow a = \frac{bL}{N-L}$$
+    where $L$ is the number of employed workers and $N$ is the total number of workers.
+    Now plugging steady state $a$ and $V_u$ into the NSC, we get the \textbf{Aggregate NSC}:
+    $$w \geq e + \bar{w} + \frac{e}{q} \left(\frac{b}{u} + r\right) \equiv \hat{w} \quad \text{where} \ u = \frac{N-L}{N}$$
+\end{frame}
+
+\begin{frame}{Pareto Efficiency}
+    \begin{itemize}
+        \item First point
+        \item Second point
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Extensions}
+    \begin{itemize}
+        \item First point
+        \item Second point
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Discussion}
+    \begin{itemize}
+        \item First point
+        \item Second point
+    \end{itemize}
+\end{frame}
+
+\end{document}
