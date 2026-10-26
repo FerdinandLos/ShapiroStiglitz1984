@@ -3,6 +3,29 @@
 % Choose a presentation theme
 \usetheme{CambridgeUS} 
 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, calc}
+\usepackage{hyperref}
+
+% Color Palette
+\definecolor{navy}{HTML}{1E3A8A}
+\definecolor{navylight}{HTML}{EFF6FF}
+\definecolor{teal}{HTML}{0F766E}
+\definecolor{teallight}{HTML}{F0FDFA}
+\definecolor{crimson}{HTML}{B91C1C}
+\definecolor{crimsonlight}{HTML}{FEF2F2}
+\definecolor{amber}{HTML}{B45309}
+\definecolor{amberlight}{HTML}{FFFBEB}
+\definecolor{slate}{HTML}{334155}
+\definecolor{slatelight}{HTML}{F8FAFC}
+\definecolor{bordergray}{HTML}{CBD5E1}
+
 \title{To Work or to Shirk: The Shapiro-Stiglitz Theory}
 \subtitle{Shapiro, C.; Stiglitz, J.E. (1984). "Equilibrium Unemployment as a Worker Discipline Device". The American Economic Review. 74 (3): 433-444}
 \author{Ferdinand Loser}
@@ -26,14 +49,74 @@
 
 \begin{frame}{Worker's Choice}
     An individual worker's utility function is given by:
-    $$U(w, e) = w - e$$ 
-    where $w$ is the wage and $e$ is the effort level. 
-    Her lifetime utility is given by:
-    $$W = E \int_{0}^{\infty} u(w(t), e(t)) \exp(-rt) \, dt$$
-    where $r$ is the discount rate. \\
+    $$U(w, e) = w - e$$
+    where $w$ is the wage and $e$ is the effort exerted by the worker. The worker has two choices:
 
-    She has the choice to either work or shirk.
-    When working, she exerts effort $e$ and receives wage $w$. When shirking, she exerts no effort and receives the same wage $w$. However, a worker who shirks faces a probability $q$ of being caught and fired, in which case she receives unemployment benefits $\bar{w}$. Regardless of effort $e$, a worker also faces an exogenous probability $b$ of being fired. 
+\begin{center}
+\begin{tikzpicture}[
+    >=Stealth,
+    font=\sffamily,
+    root/.style={
+        circle,
+        draw=navy,
+        line width=1.4pt,
+        fill=navylight,
+        minimum size=1.5cm,
+        align=center,
+        font=\sffamily\bfseries\small,
+        text=navy
+    },
+    outcome_work/.style={
+        rectangle,
+        rounded corners=5pt,
+        draw=teal,
+        line width=1.3pt,
+        fill=teallight,
+        text width=5.2cm,
+        inner sep=8pt,
+        align=left,
+        font=\sffamily\small
+    },
+    outcome_shirk/.style={
+        rectangle,
+        rounded corners=5pt,
+        draw=crimson,
+        line width=1.3pt,
+        fill=crimsonlight,
+        text width=5.2cm,
+        inner sep=8pt,
+        align=left,
+        font=\sffamily\small
+    }
+]
+
+% Root Decision Node
+\node[root] (worker) at (0, 0) {Worker};
+
+% Outcome Nodes
+\node[outcome_work] (work) at (6.2, 1.35) {
+    \textbf{\textcolor{teal}{Work}} \\[3pt]
+    $\bullet$ \textbf{Utility:} $w - e$ \\
+    $\bullet$ \textbf{Firing prob.:} $b$ (exogenous)
+};
+
+\node[outcome_shirk] (shirk) at (6.2, -1.35) {
+    \textbf{\textcolor{crimson}{Shirk}} \\[3pt]
+    $\bullet$ \textbf{Utility:} $w$ \\
+    $\bullet$ \textbf{Firing prob.:} $q$ for being caught and $b$ (exogenous)
+};
+
+% Decision Branches
+\draw[->, line width=1.4pt, teal] (worker.north east) -- (work.west)
+    node[midway, above left=2pt, font=\sffamily\bfseries\small, text=teal] {$e > 0$};
+
+\draw[->, line width=1.4pt, crimson] (worker.south east) -- (shirk.west)
+    node[midway, below left=2pt, font=\sffamily\bfseries\small, text=crimson] {$e = 0$};
+
+\end{tikzpicture}
+\end{center}
+
+
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Asset Equations}
@@ -72,15 +155,37 @@
         \item If $w < \hat{w}$, workers will shirk due to (1) the low wage $w$ and (2) a high probability $a$ of being rehired (high labor demand at low $w$). $\Rightarrow$ Firm should increase $w$ to $\hat{w}$ to prevent shirking.
         \item If $w > \hat{w}$, workers will exert effort $e$ due to (1) the high wage $w$ and (2) a low probability $a$ of being rehired (low labor demand at high $w$). $\Rightarrow$ Firm should decrease $w$ to $\hat{w}$ to save costs.
     \end{itemize}
+    \begin{block}{Conclusion}
+        The \textit{NSC} is binding for the firm, i.e. all firms will choose the lowest possible wage that fulfills it, which is $\hat{w}$.
+    \end{block}
     
 \end{frame}
 
-\begin{frame}{Aggregate NSC}
+\begin{frame}[allowframebreaks]{Aggregate NSC}
     In steady state, the employment pool $L$ stays constant, i.e. the flow into unemployment must equal the flow out of unemployment:
     $$ bL = a(N-L) \Leftrightarrow a = \frac{bL}{N-L}$$
     where $L$ is the number of employed workers and $N$ is the total number of workers.
     Now plugging steady state $a$ and $V_u$ into the NSC, we get the \textbf{Aggregate NSC}:
     $$w \geq e + \bar{w} + \frac{e}{q} \left(\frac{b}{u} + r\right) \equiv \hat{w} \quad \text{where} \ u = \frac{N-L}{N}$$
+    \framebreak
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{Figures/agg_NSC.png}
+    \end{center}
+    
+\end{frame}
+
+\begin{frame}{Equilibrium}
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{Figures/Equilibrium.png}
+    \end{center}
+    
+\end{frame}
+
+\begin{frame}{Comparative Statics}
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{Figures/Comp_Statics.png}
+    \end{center}
+    
 \end{frame}
 
 \begin{frame}{Pareto Efficiency}
